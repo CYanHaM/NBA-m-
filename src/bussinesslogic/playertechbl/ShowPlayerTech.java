@@ -14,12 +14,11 @@ import blservice.playertechblservice.ShowPlayerTechService;
 import bussinesslogic.Transfer.PlayerTechTransfer;
 
 
-public class ShowPlayerTech  implements ShowPlayerTechService {
+public class ShowPlayerTech {
 
 	ShowDataService sd = new Show();
 	PlayerTechTransfer tr = new PlayerTechTransfer();
 	
-	@Override
 	public ArrayList<PlayerTechVO> showSeasonPlayerData() {
 		// TODO Auto-generated method stub
 		ArrayList<PlayerTechPO> list = sd.showSeasonPlayerData();
@@ -27,7 +26,6 @@ public class ShowPlayerTech  implements ShowPlayerTechService {
 		return res;
 	}
 
-	@Override
 	public PlayerTechVO showKeyData(String name, String team) {
 		// TODO Auto-generated method stub
 	   PlayerTechPO po = sd.showKeyData(name, team);
@@ -35,21 +33,18 @@ public class ShowPlayerTech  implements ShowPlayerTechService {
 		return vo;
 	}
 
-	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
 		sd.refresh();
 		showSeasonPlayerData();
 	}
 
-	@Override
 	public void PlayerTechIni() {
 		// TODO Auto-generated method stub
 		PlayerTechInitial ini = new OperateWithFile();
 		ini.write();
 	}
 
-	@Override
 	public ArrayList<PlayerTechVO> ascend(final String type) {
 		// TODO Auto-generated method stub
 		Comparator<PlayerTechVO> comparator = new Comparator<PlayerTechVO>(){  
