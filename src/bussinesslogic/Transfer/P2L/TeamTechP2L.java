@@ -34,6 +34,8 @@ public class TeamTechP2L {
 		ttli.reboundEfficiency = ttpo.reboundEfficiency;
 		ttli.stealEfficiency = ttpo.stealEfficiency;
 		ttli.secondaryAttackEfficiency = ttpo.secondaryAttackEfficiency;
+		ttli.offensiveReboundEfficiency = ttpo.offensiveReboundEfficiency;
+		ttli.defensiveReboundEfficiency = ttpo.offensiveReboundEfficiency;
 		
 		if(ttli.gameNum==0){
 			

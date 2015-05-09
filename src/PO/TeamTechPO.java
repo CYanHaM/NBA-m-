@@ -42,6 +42,9 @@ public class TeamTechPO implements Serializable {
 	public int opponentOffensiveRebound;          //对方进攻篮板
 	public double opponentOffensiveRound;        //对方进攻回合
 	public int opponentScore;        //对方得分
+	
+	public double offensiveReboundEfficiency;
+	public double defensiveReboundEfficiency;
 
 
 	public boolean equals(TeamTechPO ttpo){

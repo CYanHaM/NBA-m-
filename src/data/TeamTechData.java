@@ -95,6 +95,8 @@ public class TeamTechData implements TeamTechDataService{
 			ttpo.reboundEfficiency = (double)ttpo.rebound/((double)ttpo.rebound+(double)ttpo.opponentDefensiveRebound+(double)ttpo.opponentOffensiveRebound);
 			ttpo.stealEfficiency = (double)ttpo.steal/((double)ttpo.opponentOffensiveRound/100);					//鎶㈡柇鏁堢巼
 			ttpo.secondaryAttackEfficiency = (double)ttpo.secondaryAttack/((double)ttpo.offensiveRound/100);		//鍔╂敾鏁堢巼
+			ttpo.offensiveReboundEfficiency = (double)ttpo.offensiveRebound/((double)ttpo.offensiveRebound+(double)ttpo.opponentDefensiveRebound);
+			ttpo.defensiveReboundEfficiency = (double)ttpo.defensiveRebound/((double)ttpo.defensiveRebound+(double)ttpo.opponentOffensiveRebound);
 			result.add(ttpo);
 		}
 		try{

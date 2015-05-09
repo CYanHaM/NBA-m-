@@ -53,6 +53,9 @@ public class TeamTechLineItem {
 	public double scoreave;                           //比赛得分
 	public double offensiveRoundave;                  //进攻回合
 	
+	public double offensiveReboundEfficiency;		//进攻篮板效率
+	public double defensiveReboundEfficiency;		//防守篮板效率
+	
 	public boolean equals(TeamTechLineItem ttli){
 		if(!this.name.equals(ttli.name)){
 			System.out.println("name");
