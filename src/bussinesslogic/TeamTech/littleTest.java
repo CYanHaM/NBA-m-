@@ -24,7 +24,10 @@ public class littleTest {
 //		}
 		tni = tt.sortNorm("point.des", 30, true);
 		for(int i = 0; i<30; i++){
-			System.out.println(tni.get(i).toString());
+			System.out.println(tni.get(i).getFoul());
+		}
+		for(int i = 0; i<30;i++){
+			System.out.println(tni.get(i).getFault());
 		}
 
 	}
