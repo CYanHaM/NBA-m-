@@ -298,7 +298,7 @@ public class OperateWithFile implements PlayerTechInitial {
 				if(it2.next().time==0)
 					it2.remove();
 			}
-		/*	Comparator<PlayerTechMPO> comparator = new Comparator<PlayerTechMPO>(){  
+			Comparator<PlayerTechMPO> comparator = new Comparator<PlayerTechMPO>(){  
 				//逆序
 				public int compare(PlayerTechMPO p1, PlayerTechMPO p2) {   
 					 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -316,12 +316,6 @@ public class OperateWithFile implements PlayerTechInitial {
 				}
 			}; 
 			Collections.sort(list, comparator);
-			for(PlayerTechMPO mpo:list)
-				System.out.println(mpo.date);
-		*/
-			list = dateSort(list);
-		//	for(PlayerTechMPO mpo:list)
-			//	System.out.println(mpo.date);
 		}
 		Iterator<ArrayList<PlayerTechMPO>> it = li.iterator();
 		while(it.hasNext()){
@@ -378,32 +372,5 @@ public class OperateWithFile implements PlayerTechInitial {
 			}
 		}
 		return poList;
-	}
-	
-	public ArrayList<PlayerTechMPO> dateSort(ArrayList<PlayerTechMPO> mlist){
-
-		DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
-		Date d1=new Date();
-		Date d2=new Date();
-		PlayerTechMPO compo=new PlayerTechMPO();
-		for(int i=0;i<mlist.size();i++){
-			for(int j=0;j<mlist.size()-i-1;j++){
-				try {
-					d1=fmt.parse(mlist.get(j).date);
-					d2=fmt.parse(mlist.get(j+1).date);
-					if(d1.after(d2)){
-						compo=mlist.get(j);
-						mlist.set(j, mlist.get(j+1));
-						mlist.set(j+1, compo);
-					}
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-			}
-		
-		}
-		for(PlayerTechMPO mpo:mlist)
-			System.out.println(mpo.date);
-		return mlist;
 	}
 }

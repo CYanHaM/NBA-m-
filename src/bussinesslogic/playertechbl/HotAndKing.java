@@ -19,15 +19,16 @@ public class HotAndKing {
 	
 	public static void main(String[] args){
 		HotAndKing na = new HotAndKing();
-		/*ArrayList<PlayerHotInfo> res = na.findHotPlayer("assist", 100);
+	/*	ArrayList<PlayerHotInfo> res = na.findHotPlayer("assist", 100);
 		for(PlayerHotInfo i:res){
 			System.out.println(i.getName()+" "+ i.getField()+" "+i.getValue()+" "+i.getUpgradeRate());
 		}
-		*/
-		ArrayList<PlayerKingInfo> res = na.findSeasonKingPlayer("assist", 500);
+	*/	
+		ArrayList<PlayerKingInfo> res = na.findTodayKingPlayer("rebound", 5);
 		for(PlayerKingInfo i:res){
 			System.out.println(i.getName()+" "+ i.getField()+" "+i.getValue());
 		}
+		
 	}
 	
 	ShowPlayerTech sh = new ShowPlayerTech();
@@ -88,7 +89,7 @@ public class HotAndKing {
 		}
 		return result;
 	}	
-	//有问题！！！
+
 	public ArrayList<PlayerKingInfo> findTodayKingPlayer(String field, int number){
 		ArrayList<PlayerKingInfo> result = new ArrayList<PlayerKingInfo>();
 		OperateWithFile owf = new OperateWithFile();
