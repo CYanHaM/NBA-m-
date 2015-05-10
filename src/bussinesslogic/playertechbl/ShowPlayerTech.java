@@ -10,7 +10,6 @@ import dataservice.playertechdataservice.PlayerTechInitial;
 import dataservice.playertechdataservice.ShowDataService;
 import PO.PlayerTechPO;
 import VO.PlayerTechVO;
-import blservice.playertechblservice.ShowPlayerTechService;
 import bussinesslogic.Transfer.PlayerTechTransfer;
 
 
@@ -213,7 +212,6 @@ public class ShowPlayerTech {
 		return list;
 	}
 
-	@Override
 	public ArrayList<PlayerTechVO> descend(final String type) {
 		// TODO Auto-generated method stub
 		Comparator<PlayerTechVO> comparator = new Comparator<PlayerTechVO>(){  
