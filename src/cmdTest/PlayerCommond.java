@@ -2,20 +2,21 @@ package cmdTest;
 
 import java.util.ArrayList;
 
-import test.data.PlayerHotInfo;
 import de.tototec.cmdoption.CmdOption;
 import bussinesslogic.playertechbl.HotAndKing;
-import bussinesslogic.playertechbl.PlayerTechFind;
+import bussinesslogic.playertechbl.NormalAvg;
+import bussinesslogic.playertechbl.NormalTotal;
+import bussinesslogic.playertechbl.SortHigh;
 
 public class PlayerCommond {
 	public ArrayList<?> result = new ArrayList();
 	private boolean isTotal = false;
-	private boolean isHigh = false;
 	private int num = 50;
 	boolean isSeason = false;
 	boolean isAll = true;
+	String filter = null;
+	String sortCondition = null;
 	HotAndKing hk = new HotAndKing();
-	PlayerTechFind ptf = new PlayerTechFind();
 	
 	@CmdOption(names = {"-total"}, conflictsWith = {"avg"})
 	public void setTotal(){
@@ -47,21 +48,38 @@ public class PlayerCommond {
 		if(isSeason)
 			result = hk.findSeasonKingPlayer(field, num);
 		else
-			result = hk
+			result = hk.findTodayKingPlayer(field, num);
+	}
+			
+	@CmdOption(names = {"-filter"}, args="field", conflictsWith={"-hot","king","high"})
+	public void filter(String field){
+		filter = field;
+	}
+	
+	@CmdOption(names = {"-sort"}, args="sort", conflictsWith={"-hot","king"})
+	public void sort(String sort){
+		sortCondition = sort;
+	}
+	
+	@CmdOption(names = {"-player"})
+	public void normal(){
+		if(num!=0){
+			if(isTotal){
+				NormalTotal nt = new NormalTotal();
+				result = nt.normalAll(filter, sortCondition, num);
+			}
+			else{
+				NormalAvg na = new NormalAvg();
+				result = na.normalAll(filter, sortCondition, num);
+			}
+		}		
 	}
 	
 	@CmdOption(names = {"-high"}, conflictsWith = {"-all","-avg","-hot","-king","filter"})
 	public void setHigh(){
-		isHigh = true;
-	}
-			
-	@CmdOption(names = {"-filter"}, args="field.value", conflictsWith={"-hot","king","high"})
-	public void filter(){
-		
-	}
-	
-	@CmdOption(names = {"-sort"}, args="field.sortOrder", conflictsWith={"-hot","king"})
-	public void sort(){
-		
+		if(num!=0){
+			SortHigh sh = new SortHigh();
+			result = sh.highAll(sortCondition, num);
+		}
 	}
 }
