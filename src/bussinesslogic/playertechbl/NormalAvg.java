@@ -1,6 +1,5 @@
 package bussinesslogic.playertechbl;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,7 +15,6 @@ import dataservice.playerinfodataservice.PlayerInfoDataService;
 
 public class NormalAvg {
 	
-	Date dt = new Date();
 	public static void main(String[] args){
 		NormalAvg na = new NormalAvg();
 		ArrayList<PlayerNormalInfo> res = na.normalAll("league.West,age.22<X<=25", "point.desc", 50);
@@ -28,7 +26,6 @@ public class NormalAvg {
 	//返回所有球员的基本数据
 	public ArrayList<PlayerNormalInfo> normalAll(String filter, 
 				String sort,int n){
-		long dt1 = dt.getTime();
 		ArrayList<PlayerNormalInfo> result = new ArrayList<PlayerNormalInfo>();
 		ArrayList<PlayerTechVO> all = sh.showSeasonPlayerData();
 		if(filter!=null){
