@@ -20,13 +20,13 @@ public class AnalysecmdOption {
 	public void start(){
 		PlayerCommond pc = new PlayerCommond();
 		TeamCommond tc = new TeamCommond();
-		CmdlineParser cp = new CmdlineParser(new Object[]{pc, tc});
-		if(args[0].equals("-player")){
-			cp.parse(args);
+		CmdlineParser cp = new CmdlineParser(pc, tc);
+		cp.parse(args);
+		if(cp.getParsedCommandName()==null)return;
+		if(cp.getParsedCommandName().equals("-player")){
 			pc = (PlayerCommond)cp.getParsedCommandObject();
 			setResult(pc.result);
-		}else if(args[0].equals("-team")){
-			cp.parse(args);
+		}else if(cp.getParsedCommandName().equals("-team")){
 			tc = (TeamCommond)cp.getParsedCommandObject();
 			setResult(tc.result);
 		}
