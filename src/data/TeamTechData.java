@@ -16,11 +16,12 @@ import dataservice.TeamTechDataService;
 
 public class TeamTechData implements TeamTechDataService{
 
-	readFrom rf = new DataProcessing();
+
 	File file = new File("database/teamtech.ser");
 	
-	public void WriteIn(){
+	public void WriteIn(String datasource){
 		ArrayList<MatchPO> source = new ArrayList<MatchPO>();
+		readFrom rf = new DataProcessing(datasource);
 		source = rf.matchRead();
 		ArrayList<TeamPO> teams = rf.teamRead();
 		ArrayList<TeamTechPO> result = new ArrayList<TeamTechPO>();

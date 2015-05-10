@@ -23,11 +23,15 @@ public class DataProcessing implements readFrom{
 	ArrayList<MatchPO>mlist=new ArrayList<MatchPO>();
 	ArrayList<PlayerPO>plist=new ArrayList<PlayerPO>();
 	ArrayList<TeamPO>tlist=new ArrayList<TeamPO>();
+	String datasource = new String();
+	public DataProcessing(String data){
+		this.datasource = data;
+	}
 	//比赛信息读入
 	public ArrayList<MatchPO> matchRead(){
 		try {
 			String encoding = "GBK";
-			File file = new File("MatchData");
+			File file = new File(datasource);
 			File filelist[]=file.listFiles();
 			for(int i=0;i<filelist.length;i++){
 				

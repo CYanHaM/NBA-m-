@@ -22,30 +22,39 @@ public class TeamTech {
 	TeamDataService tds = new TeamData();
 	
 	public ArrayList<TeamHighInfo> sortHigh(String sort, int n) {
-		TeamTechEnum[] dataType = null;
+		
 		String[] term = sort.split(",");
 		String[][] clear = new String[term.length][2];
 		int numOfcondition = term.length;
+		TeamTechEnum[] dataType = new TeamTechEnum[numOfcondition];
 		for(int i = 0; i<numOfcondition; i++){
 			clear[i] = term[i].split("\\.");
-			//clear[][0]ÖÐ·ÅµÄÊÇÅÅÐòÌõ¼þ£¬clear[][1]ÖÐ·ÅµÄÊÇÉýÐò»ò½µÐò
+			//clear[][0]ï¿½Ð·Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½clear[][1]ï¿½Ð·Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			switch(clear[i][0]){
 			case "winRate":
 				dataType[i] = TeamTechEnum.winningRate;
+				break;
 			case "offendRound":
 				dataType[i] = TeamTechEnum.offensiveRound;
+				break;
 			case "offendEfficient":
 				dataType[i] = TeamTechEnum.offensiveEfficiency;
+				break;
 			case "defendEfficient":
 				dataType[i] = TeamTechEnum.defensiveEfficiency;
+				break;
 			case "offendReboundEfficient":
 				dataType[i] = TeamTechEnum.offensiveReboundEfficiency;
+				break;
 			case "defendReboundEfficient":
 				dataType[i] = TeamTechEnum.defensiveReboundEfficiency;
+				break;
 			case "stealEfficient":
 				dataType[i] = TeamTechEnum.stealEfficiency;
+				break;
 			case "assistEfficient":
 				dataType[i] = TeamTechEnum.secondaryAttackEfficiency;
+				break;
 			}
 		}
 		ArrayList<TeamTechPO> list = new ArrayList<TeamTechPO>();	
@@ -963,13 +972,17 @@ public class TeamTech {
 	}
 
 	public ArrayList<TeamNormalInfo> sortNorm(String sort, int n, boolean isTotal) {
-		TeamTechEnum[] dataType = null;
 		String[] term = sort.split(",");
 		String[][] clear = new String[term.length][2];
 		int numOfcondition = term.length;
 		for(int i = 0; i<numOfcondition; i++){
+			clear[i][0] = term[i];
+		}
+		TeamTechEnum[] dataType = new TeamTechEnum[numOfcondition];
+		
+		for(int i = 0; i<numOfcondition; i++){
 			clear[i] = term[i].split("\\.");
-			//clear[][0]ÖÐ·ÅµÄÊÇÅÅÐòÌõ¼þ£¬clear[][1]ÖÐ·ÅµÄÊÇÉýÐò»ò½µÐò
+			//clear[][0]ï¿½Ð·Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½clear[][1]ï¿½Ð·Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			switch(clear[i][0]){
 			case "point": 
 				if(isTotal){
@@ -977,60 +990,72 @@ public class TeamTech {
 				}else{
 					dataType[i] = TeamTechEnum.scoreave;
 				}
+				break;
 			case "rebound":
 				if(isTotal){
 					dataType[i] = TeamTechEnum.rebound;
 				}else{
 					dataType[i] = TeamTechEnum.reboundave;
 				}
+				break;
 			case "assist":
 				if(isTotal){
 					dataType[i] = TeamTechEnum.secondaryAttack;
 				}else{
 					dataType[i] = TeamTechEnum.secondaryAttackave;
 				}
+				break;
 			case "blockShot":
 				if(isTotal){
 					dataType[i] = TeamTechEnum.blockShot;
 				}else{
 					dataType[i] = TeamTechEnum.blockShotave;
 				}
+				break;
 			case "steal":
 				if(isTotal){
 					dataType[i] = TeamTechEnum.steal;
 				}else{
 					dataType[i] = TeamTechEnum.stealave;
 				}
+				break;
 			case "foul":
 				if(isTotal){
 					dataType[i] = TeamTechEnum.foul;
 				}else{
 					dataType[i] = TeamTechEnum.foulave;
 				}
+				break;
 			case "fault":
 				if(isTotal){
 					dataType[i] = TeamTechEnum.fault;
 				}else{
 					dataType[i] = TeamTechEnum.faultave;
 				}
+				break;
 			case "shot":
 				dataType[i] = TeamTechEnum.shotInRate;
+				break;
 			case "three":
 				dataType[i] = TeamTechEnum.threeShotInRate;
+				break;
 			case "penalty":
 				dataType[i] = TeamTechEnum.penaltyShotInRate;
+				break;
 			case "defendRebound":
 				if(isTotal){
 					dataType[i] = TeamTechEnum.defensiveRebound;
 				}else{
 					dataType[i] = TeamTechEnum.defensiveReboundave;
 				}
+				break;
 			case "offendRebound":
 				if(isTotal){
 					dataType[i] = TeamTechEnum.offensiveRebound;
 				}else{
 					dataType[i] = TeamTechEnum.offensiveReboundave;
 				}
+				break;
 			}
 		}
 		ArrayList<TeamTechPO> list = new ArrayList<TeamTechPO>();	
@@ -6396,28 +6421,40 @@ public class TeamTech {
 			switch(DataType){
 			case score:
 				thi.setValue(forSort.get(i).scoreave);
+				break;
 			case rebound:
 				thi.setValue(forSort.get(i).reboundave);
+				break;
 			case secondaryAttack:
 				thi.setValue(forSort.get(i).secondaryAttackave);
+				break;
 			case blockShot:
 				thi.setValue(forSort.get(i).blockShotave);
+				break;
 			case steal:
 				thi.setValue(forSort.get(i).stealave);
+				break;
 			case foul:
 				thi.setValue(forSort.get(i).foulave);
+				break;
 			case fault:
 				thi.setValue(forSort.get(i).faultave);
+				break;
 			case shotInRate:
 				thi.setValue(forSort.get(i).shotInRate);
+				break;
 			case threeShotInRate:
 				thi.setValue(forSort.get(i).threeShotInRate);
+				break;
 			case penaltyShotInRate:
 				thi.setValue(forSort.get(i).penaltyShotInRate);
+				break;
 			case offensiveRebound:
 				thi.setValue(forSort.get(i).offensiveReboundave);
+				break;
 			case defensiveRebound:
 				thi.setValue(forSort.get(i).defensiveReboundave);
+				break;
 			}
 			result.add(thi);
 		}
@@ -6426,7 +6463,7 @@ public class TeamTech {
 	
 	public void init() {
 		// TODO Auto-generated method stub
-		ttds.WriteIn();
+		ttds.WriteIn("matchData");
 	}
 
 }

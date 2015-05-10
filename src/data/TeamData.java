@@ -16,7 +16,6 @@ import dataservice.TeamDataService;
 
 public class TeamData implements TeamDataService, Serializable{
 
-	readFrom rf = new DataProcessing();
 	File file = new File("database/team.ser");
 
 	/**
@@ -25,7 +24,7 @@ public class TeamData implements TeamDataService, Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public void WriteIn(){
-		readFrom init = new DataProcessing();
+		readFrom rf = new DataProcessing("matchData");
 		ArrayList<TeamPO> list = new ArrayList<TeamPO>();
 		list = rf.teamRead();
 		try{
