@@ -22,23 +22,19 @@ import PO.PlayerTechPO;
 
 public class OperateWithFile implements PlayerTechInitial {
 	
-	public static void main(String[] args){
-		OperateWithFile owf = new OperateWithFile();
-		owf.write();
-	}
-	
-	public void write(){
-		
-		
-		ArrayList<PlayerTechMPO> mpoList = calculateTeam();
+	public void write(String dataSource){
+		//calculate计算一些球员所属的球队属性
+		ArrayList<PlayerTechMPO> mpoList = calculateTeam(dataSource);
+		//用来存放所有的PlayerTech信息
 		ArrayList<PlayerTechPO> poList = new ArrayList<PlayerTechPO>();
 
+		//用来存放球员每场比赛的按名字分类后的信息
 		ArrayList<ArrayList<PlayerTechMPO> > div = new ArrayList<ArrayList<PlayerTechMPO> >();
 		while(mpoList.size()!=0){
 			int mpoSize = mpoList.size();
-			//�ݴ�ͬһ��Ա��ÿ���������ݡ�
+			
 			ArrayList<PlayerTechMPO> temp = new ArrayList<PlayerTechMPO>();
-			temp.add(mpoList.get(0));
+			temp.add((PlayerTechMPO) mpoList.get(0).clone());
 			String name = mpoList.get(0).name;
 			String team = mpoList.get(0).team;
 			String position = mpoList.get(0).position;
@@ -54,89 +50,56 @@ public class OperateWithFile implements PlayerTechInitial {
 			//��mpoList���Ѵ������ɾ����
 			Iterator<PlayerTechMPO> it = mpoList.iterator();
 			while(it.hasNext()){  
-			    PlayerTechMPO  tem = it.next();  
+			    PlayerTechMPO tem = it.next();  
 			    if(tem.name.equals("")){  
-			    it.remove();  
+			    	it.remove();  
 			    }  
 			} 
 			div.add(temp);
-			//��temp���д���
 			PlayerTechPO ptp = new PlayerTechPO();
+			//球员各人数据
 			ptp.name = name;
 			ptp.team = team;
 			ptp.position = position;
 			ptp.division = division;
-			//����������Ӷ���
-			ptp.gameNum = 0;
-			ptp.startingNum = 0;
-			ptp.rebound = 0;
-			ptp.secondaryAttack = 0;
-			ptp.time = 0;
-			ptp.offensiveNum = 0;
-			ptp.defensiveNum = 0;
-			ptp.steal = 0;
-			ptp.blockShot = 0;
-			ptp.fault = 0;
-			ptp.foul = 0;
-			ptp.score = 0;
-			ptp.shotIn = 0;
-			ptp.shot = 0;
-			ptp.threeShotIn = 0;
-			ptp.threeShot = 0;
-			ptp.penaltyShotIn = 0;
-			ptp.penaltyShot = 0;
-			ptp.teamAllTime = 0;
-			ptp.teamOffensiveRebound = 0;
-			ptp.teamDefensiveRebound = 0;
-			ptp.opponentOffensiveRebound = 0;
-			ptp.opponentDefensiveRebound = 0;
-			ptp.teamShotIn = 0;
-			ptp.opponentOffensiveNum = 0;
-			ptp.opponentTwoShot = 0;
-			ptp.teamShot = 0;
-			ptp.teamPenaltyShot = 0;
-			ptp.teamFault = 0;
-			
 			
 			int tempSize = temp.size();
 			for(int i=0;i<tempSize;i++){
 				PlayerTechMPO mp = temp.get(i);
-				//���δ�������򲻱ؼ�������
-				if(mp.ifParticipate==0)
-					break;
-				ptp.gameNum += mp.ifParticipate;
-				ptp.startingNum += mp.ifFirstLineUp;
-				ptp.rebound += mp.rebound;
-				ptp.secondaryAttack += mp.secondaryAttack;
-				ptp.time += mp.time;                                                 
-				ptp.offensiveNum += mp.offensiveRebound;
-				ptp.defensiveNum += mp.defensiveRebound;
-				ptp.steal += mp.steal;
-				ptp.blockShot += mp.blockShot;
-				ptp.fault += mp.fault;
-				ptp.foul += mp.foul;
-				ptp.score += mp.score;
-				ptp.shotIn += mp.shotIn;
-				ptp.shot += mp.shot;
-				ptp.threeShotIn += mp.threeShotIn;
-				ptp.threeShot += mp.threeShot;
-				ptp.penaltyShotIn += mp.penaltyShotIn;
-				ptp.penaltyShot += mp.penaltyShot;
-				ptp.ifDouble += ptp.ifDouble;
-				
-				ptp.teamAllTime = mp.teamAllTime;
-				ptp.teamOffensiveRebound = mp.teamOffensiveRebound;
-				ptp.teamDefensiveRebound = mp.teamDefensiveRebound;
-				ptp.opponentOffensiveRebound = mp.opponentOffensiveRebound;
-				ptp.opponentDefensiveRebound = mp.opponentDefensiveRebound;
-				ptp.teamShotIn = mp.teamShotIn;
-				ptp.opponentOffensiveNum = mp.opponentOffensiveNum;
-				ptp.opponentTwoShot = mp.opponentTwoShot;
-				ptp.teamShot = mp.teamShot;
-				ptp.teamPenaltyShot = mp.teamPenaltyShot;
-				ptp.teamFault = mp.teamFault;
-			}
+				if(mp.ifParticipate!=0){
+					ptp.gameNum += mp.ifParticipate;
+					ptp.startingNum += mp.ifFirstLineUp;
+					ptp.rebound += mp.rebound;
+					ptp.secondaryAttack += mp.secondaryAttack;
+					ptp.time += mp.time;                                                 
+					ptp.offensiveNum += mp.offensiveRebound;
+					ptp.defensiveNum += mp.defensiveRebound;
+					ptp.steal += mp.steal;
+					ptp.blockShot += mp.blockShot;
+					ptp.fault += mp.fault;
+					ptp.foul += mp.foul;
+					ptp.score += mp.score;
+					ptp.shotIn += mp.shotIn;
+					ptp.shot += mp.shot;
+					ptp.threeShotIn += mp.threeShotIn;
+					ptp.threeShot += mp.threeShot;
+					ptp.penaltyShotIn += mp.penaltyShotIn;
+					ptp.penaltyShot += mp.penaltyShot;
+					ptp.ifDouble += mp.ifDouble;
+				}
+				ptp.teamAllTime += mp.teamAllTime;
+				ptp.teamOffensiveRebound += mp.teamOffensiveRebound;
+				ptp.teamDefensiveRebound += mp.teamDefensiveRebound;
+				ptp.opponentOffensiveRebound += mp.opponentOffensiveRebound;
+				ptp.opponentDefensiveRebound += mp.opponentDefensiveRebound;
+				ptp.teamShotIn += mp.teamShotIn;
+				ptp.opponentOffensiveNum += mp.opponentOffensiveNum;
+				ptp.opponentTwoShot += mp.opponentTwoShot;
+				ptp.teamShot += mp.teamShot;
+				ptp.teamPenaltyShot += mp.teamPenaltyShot;
+				ptp.teamFault += mp.teamFault;
 			
+			}
 			
 			if(ptp.shot==0){					
 				ptp.shotInRate=0;
@@ -148,8 +111,6 @@ public class OperateWithFile implements PlayerTechInitial {
 				}else{
 					ptp.threeShotInRate=(double)ptp.threeShotIn/(double)ptp.threeShot;
 				}
-			ptp.penaltyShot=ptp.penaltyShot;
-			ptp.penaltyShotIn=ptp.penaltyShotIn;
 			if(ptp.penaltyShot==0){					
 				ptp.penaltyShotInRate=0;
 				}else{
@@ -242,7 +203,7 @@ public class OperateWithFile implements PlayerTechInitial {
         }
          return list;
 	}
-	
+
 	public ArrayList<ArrayList<PlayerTechMPO>> readDiv(){
 		ArrayList<ArrayList<PlayerTechMPO>> res = new ArrayList<ArrayList<PlayerTechMPO>>(); 
 		try{
@@ -269,19 +230,19 @@ public class OperateWithFile implements PlayerTechInitial {
             e.printStackTrace();
         }
          return res;
-	}
-	
-	public ArrayList<PlayerTechMPO> calculateTeam(){
+	}	
+	public ArrayList<PlayerTechMPO> calculateTeam(String dataSource){
 		
 		ArrayList<PlayerTechMPO> res = new ArrayList<PlayerTechMPO>();
 		
-		readFrom rf = new DataProcessing();
+		readFrom rf = new DataProcessing(dataSource);
 		ArrayList<MatchPO> match = rf.matchRead();   
 		int matchSize = match.size();
 		for(int i=0;i<matchSize;i++){
 			MatchPO ma = match.get(i);
 			ArrayList<PlayerTechMPO> list = ma.playerStatistic;  
 			
+			//一些球队数据
 			int teamAllTime =ma.homeAllTime;                  //ȫ���ϳ�ʱ��
 			int teamOffensiveRebound = ma.homeTeamOffensiveRebound;                  //ȫ�ӽ�������
 			int teamDefensiveRebound = ma.homeTeamDeffensiveRebound;                //ȫ�ӷ�������

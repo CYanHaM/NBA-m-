@@ -2,5 +2,5 @@ package dataservice.playertechdataservice;
 
 public interface PlayerTechInitial {
 
-	public void write();
+	public void write(String dataSource);
 }

@@ -22,16 +22,10 @@ public class ShowPlayerTech {
 		ArrayList<PlayerTechVO> res = tr.list2vo(list);
 		return res;
 	}
-	
-	public void refresh() {
-		// TODO Auto-generated method stub
-		sd.refresh();
-		showSeasonPlayerData();
-	}
 
-	public void PlayerTechIni() {
+	public void PlayerTechIni(String dataSource) {
 		// TODO Auto-generated method stub
 		PlayerTechInitial ini = new OperateWithFile();
-		ini.write();
+		ini.write(dataSource);
 	}
 }

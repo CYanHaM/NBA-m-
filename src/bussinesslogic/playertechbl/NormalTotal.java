@@ -24,17 +24,16 @@ public class NormalTotal {
 	}
 	
 	ShowPlayerTech sh = new ShowPlayerTech();
-	//·µ»ØËùÓÐÇòÔ±µÄ»ù±¾Êý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public ArrayList<PlayerNormalInfo> normalAll(String filter, 
 				String sort,int n){
 		ArrayList<PlayerNormalInfo> result = new ArrayList<PlayerNormalInfo>();
 		ArrayList<PlayerTechVO> all = sh.showSeasonPlayerData();
 		if(filter!=null){
 			Iterator<PlayerTechVO> it = all.iterator();
-			//²ð·Öfield.value
+			//ï¿½ï¿½ï¿½field.value
 			String[] filterTemp = filter.split(",");
 			while(it.hasNext()){
-				//field¿ÉÄÜÖµÎªposition£¬league£¬age
 				PlayerTechVO vo = it.next();
 				for(int i=0;i<filterTemp.length;i++){
 					String[] temp = filterTemp[i].split("\\.");
@@ -44,12 +43,12 @@ public class NormalTotal {
 							if(temp[1].equals("All")){
 								break;
 							}
-							//Èç¹û¸ù¾ÝÐÕÃû¼ìË÷²»µ½ÇòÔ±»ù±¾ÐÅÏ¢£¬ÔòÌø¹ý¶Ô¸ÃÇòÔ±µÄ´¦Àí
+							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½Ô±ï¿½Ä´ï¿½ï¿½ï¿½
 							PlayerVO info = findInfo(vo.name);
 							if(info==null)
 								break;
 							vo.position = info.position;
-							//¿¼ÂÇÓÐÁ½¸öÎ»ÖÃµÄÇòÔ±
+							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ãµï¿½ï¿½ï¿½Ô±
 							boolean fit= false;
 							String[] pos = vo.position.split("-");
 							for(int m=0;m<pos.length;m++){
@@ -112,7 +111,7 @@ public class NormalTotal {
 				}
 			}
 		}
-		/*¿ªÊ¼ÅÅÐò*/
+		/*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½*/
 		if(sort==null){
 			Comparator<PlayerTechVO> comparator = new Comparator<PlayerTechVO>(){
 				public int compare(PlayerTechVO v1, PlayerTechVO v2) {
@@ -1256,7 +1255,7 @@ public class NormalTotal {
 						}
 						break;
 					}
-					//Í¶ÀºÃüÖÐÂÊ
+					//Í¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					case "shot":
 					{	boolean equ = (v1.shotInRate==v2.shotInRate);
 						while(equ&&index<len){
@@ -1381,7 +1380,7 @@ public class NormalTotal {
 						}
 						break;
 					}
-					//Èý·ÖÃüÖÐÂÊ
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					case "three":
 					{	boolean equ = (v1.threeShotInRate==v2.threeShotInRate);
 						while(equ&&index<len){
@@ -1506,7 +1505,7 @@ public class NormalTotal {
 						}
 						break;
 					}		
-					//·£ÇòÃüÖÐÂÊ
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					case "penalty":
 					{	boolean equ = (v1.penaltyShotInRate==v2.penaltyShotInRate);
 						while(equ&&index<len){
@@ -1632,7 +1631,7 @@ public class NormalTotal {
 						}
 						break;
 					}
-					//Á½Ë«
+					//ï¿½ï¿½Ë«
 					case "doubleTwo":
 					{	boolean equ = (v1.ifDouble==v2.ifDouble);
 						while(equ&&index<len){
@@ -1758,8 +1757,8 @@ public class NormalTotal {
 					}
 					default: System.out.println("wrong type");
 					}
-					//Î´¾­¹ýËùÓÐ·ÖÖ§
-					System.out.println("Î´¾­¹ýËùÓÐ·ÖÖ§£¬wrong field");
+					//Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½Ö§
+					System.out.println("Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½Ö§ï¿½ï¿½wrong field");
 					return 0;
 				}
 			}; 
@@ -1772,8 +1771,9 @@ public class NormalTotal {
 			in.setName(vo.name);
 			PlayerVO info = findInfo(vo.name);
 			if(info==null)
-				continue;
-			in.setAge(info.age);
+				in.setAge(0);
+			else 
+				in.setAge(info.age);
 			in.setTeamName(vo.team);
 			in.setNumOfGame(vo.gameNum);
 			in.setStart(vo.startingNum);

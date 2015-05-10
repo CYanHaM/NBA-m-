@@ -1,10 +1,7 @@
 package data.playertechdata;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
-import PO.PlayerTechMPO;
 import PO.PlayerTechPO;
 import dataservice.playertechdataservice.ShowDataService;
 
@@ -35,23 +32,6 @@ public class Show implements ShowDataService {
 		// TODO Auto-generated method stub
 		ArrayList<PlayerTechPO> list = owf.readPO();
 		return list;
-	}
-
-	@Override
-	public PlayerTechPO showKeyData(String name, String team) {
-		// TODO Auto-generated method stub
-		ArrayList<PlayerTechPO> list = owf.readPO();
-		int size = list.size();
-		for(int i=0;i<size;i++){
-			PlayerTechPO po = list.get(i);
-			if(po.name.equals(name)&&po.team.equals(team))
-				return po;
-		}
-		return null;
-	}
-	
-	public void refresh(){
-		owf.write();
 	}
 
 }

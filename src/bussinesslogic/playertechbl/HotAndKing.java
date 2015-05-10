@@ -23,8 +23,7 @@ public class HotAndKing {
 	}
 	
 	ShowPlayerTech sh = new ShowPlayerTech();
-	//获得热门球员（进步最快球员），所有数据为Ave
-	//field可为score，rebound，assist
+	
 	public ArrayList<PlayerHotInfo> findHotPlayer(String field,int number){
 		ArrayList<PlayerHotInfo> result = new ArrayList<PlayerHotInfo>();
 		ArrayList<PlayerTechVO> list = sh.showSeasonPlayerData();
@@ -54,7 +53,7 @@ public class HotAndKing {
 		}
 		return result;
 	}
-	//获得赛季数据王
+
 	public ArrayList<PlayerKingInfo> findSeasonKingPlayer(String field, int number){
 		ArrayList<PlayerKingInfo> result = new ArrayList<PlayerKingInfo>();
 		ArrayList<PlayerTechVO> list = sh.showSeasonPlayerData();
@@ -65,7 +64,7 @@ public class HotAndKing {
 			PlayerTechVO vo = list.get(i);
 			info.setName(vo.name);
 			info.setTeamName(vo.team);
-			//======================================================还有历史问题
+			//======================================================锟斤拷锟斤拷锟斤拷史锟斤拷锟斤拷
 			info.setPosition(vo.position);
 			info.setField(field);
 			switch(field){
@@ -82,7 +81,7 @@ public class HotAndKing {
 		}
 		return result;
 	}	
-	//获得当天数据王
+	//鏈夐棶棰橈紒锛侊紒
 	public ArrayList<PlayerKingInfo> findTodayKingPlayer(String field, int number){
 		ArrayList<PlayerKingInfo> result = new ArrayList<PlayerKingInfo>();
 		OperateWithFile owf = new OperateWithFile();
@@ -96,7 +95,6 @@ public class HotAndKing {
 			PlayerTechMVO vo = list.get(i);
 			info.setName(vo.name);
 			info.setTeamName(vo.team);
-			//======================================================还有历史问题
 			info.setPosition(vo.position);
 			info.setField(field);
 			switch(field){
