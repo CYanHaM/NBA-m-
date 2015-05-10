@@ -1,19 +1,34 @@
 package cmdTest;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 
-import test.data.TeamHotInfo;
 import TypeEnum.TeamTechEnum;
 import bussinesslogic.TeamTech.TeamTech;
-import bussinesslogic.TeamTech.TeamTechLineItem;
+import de.tototec.cmdoption.CmdCommand;
 import de.tototec.cmdoption.CmdOption;
 
+@CmdCommand(names={"-team","-t"},description="Show Team Infomation")
 public class TeamCommond {
+	PrintStream outhere;
+	public TeamCommond(PrintStream out){
+		outhere = out;
+	}
+	
+	public void setPrintStream(PrintStream out){
+		outhere = out;
+	}
+	
 	public ArrayList<?> result = new ArrayList();
 	private boolean isTotal = false;
 	private boolean isHigh = false;
 	private int num = 30;
 	TeamTech tt = new TeamTech();
+	
+	@CmdOption(names = {"-avg"})
+	public void no1(){
+		
+	}
 	
 	@CmdOption(names = {"-sort"}, description = "sort", args = "condition", maxCount = 1, minCount = 0, conflictsWith={"-hot"})
 	public void sort (String condition){
@@ -21,6 +36,10 @@ public class TeamCommond {
 			this.result = tt.sortHigh(condition, num);
 		}else{
 			this.result = tt.sortNorm(condition, num, isTotal);
+		}
+		
+		for(int i = 0; i<result.size(); i++){
+			outhere.print(result.get(i));
 		}
 	}
 	
@@ -54,15 +73,22 @@ public class TeamCommond {
 			dataType = TeamTechEnum.offensiveReboundave;
 		}
 		result = tt.findSeasonHotTeam(dataType, field, num);
+		for(int i = 0; i<result.size(); i++){
+			outhere.print(result.get(i));
+		}
 	}
 		
+	@CmdOption(names={"-all"})
+	public void no(){
+		
+	}
 	
 	@CmdOption(names = ("-n"), args="number", description = "numbers", maxCount = 1, minCount = 0)
 	public void setnum(String number){
 		num = Integer.parseInt(number);
 	}
 	
-	@CmdOption(names = {"-total"}, maxCount = 1, minCount = 0, conflictsWith = {"avg"})
+	@CmdOption(names = {"-total"}, maxCount = 1, minCount = 0)
 	public void setTotal(){
 		isTotal = true;
 	}

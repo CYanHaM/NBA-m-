@@ -1,16 +1,25 @@
 package cmdTest;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
+
+import de.tototec.cmdoption.CmdlineParser;
 
 public class Console {
 	public void execute(PrintStream out, String[]args){
-		AnalysecmdOption cmdAnalyse = new AnalysecmdOption();
-		cmdAnalyse.setArgs(args);
-		cmdAnalyse.start();
-		ArrayList<?>result = cmdAnalyse.getResult();
-		for(int i = 0; i<result.size(); i++){
-			out.print(result.get(i));
+		Config c = new Config();
+		TeamCommond tc = new TeamCommond(out);
+		PlayerCommond pc = new PlayerCommond(out);
+		CmdlineParser cp = new CmdlineParser(c,tc,pc);
+		cp.parse(args);
+		if(cp.getParsedCommandName()==null)return;
+		
+		if(cp.getParsedCommandName().equals("-team")){
+			TeamCommond CmdObj = (TeamCommond)cp.getParsedCommandObject();
+			CmdObj.setPrintStream(out);
+		}
+		if(cp.getParsedCommandName().equals("-player")){
+			PlayerCommond CmdObj = (PlayerCommond)cp.getParsedCommandObject();
+			CmdObj.setPrintStream(out);
 		}
 	}
 }
