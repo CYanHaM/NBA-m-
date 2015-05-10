@@ -1,5 +1,7 @@
 package bussinesslogic.playertechbl;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,8 +20,8 @@ public class NormalTotal {
 	public static void main(String[] args){
 		NormalTotal na = new NormalTotal();
 		ArrayList<PlayerNormalInfo> res = na.normalAll("league.West,position.F", "point.desc,rebound.desc", 50);
-		for(PlayerNormalInfo i:res){
-			System.out.println(i.getName()+" "+i.getPoint()+" "+i.getRebound());
+	for(PlayerNormalInfo i:res){
+		//	System.out.println(i.getName()+" "+i.getPoint()+" "+i.getRebound());
 		}
 	}
 	

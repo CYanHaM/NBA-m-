@@ -79,15 +79,6 @@ public class PlayerCommond {
 	@CmdOption(names = {"-filter"}, args="field", conflictsWith={"-hot","-king","-high"})
 	public void filter(String field){
 		filter = field;
-	}
-	
-	@CmdOption(names = {"-sort"}, args="sort", conflictsWith={"-hot","-king"})
-	public void sort(String sort){
-		sortCondition = sort;
-	}
-	
-	@CmdOption(names = {"-player"})
-	public void normal(){
 		if(num!=0){
 			if(isTotal){
 				NormalTotal nt = new NormalTotal();
@@ -100,7 +91,25 @@ public class PlayerCommond {
 			for(int i = 0; i<result.size(); i++){
 				outhere.print(result.get(i));
 			}
-		}		
+		}
+	}
+	
+	@CmdOption(names = {"-sort"}, args="sort", conflictsWith={"-hot","-king"})
+	public void sort(String sort){   
+		sortCondition = sort;
+		if(num!=0){
+			if(isTotal){
+				NormalTotal nt = new NormalTotal();
+				result = nt.normalAll(filter, sortCondition, num);
+			}
+			else{
+				NormalAvg na = new NormalAvg();
+				result = na.normalAll(filter, sortCondition, num);
+			}
+			for(int i = 0; i<result.size(); i++){
+				outhere.print(result.get(i));
+			}
+		}
 	}
 	
 	@CmdOption(names = {"-high"}, conflictsWith = {"-hot","-king","-filter"})
