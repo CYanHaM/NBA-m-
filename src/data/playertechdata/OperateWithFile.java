@@ -319,9 +319,9 @@ public class OperateWithFile implements PlayerTechInitial {
 			for(PlayerTechMPO mpo:list)
 				System.out.println(mpo.date);
 		*/
-			dateSort(list);
-			for(PlayerTechMPO mpo:list)
-				System.out.println(mpo.date);
+			list = dateSort(list);
+		//	for(PlayerTechMPO mpo:list)
+			//	System.out.println(mpo.date);
 		}
 		Iterator<ArrayList<PlayerTechMPO>> it = li.iterator();
 		while(it.hasNext()){
@@ -380,7 +380,7 @@ public class OperateWithFile implements PlayerTechInitial {
 		return poList;
 	}
 	
-	public void dateSort(ArrayList<PlayerTechMPO> mlist){
+	public ArrayList<PlayerTechMPO> dateSort(ArrayList<PlayerTechMPO> mlist){
 
 		DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
 		Date d1=new Date();
@@ -402,5 +402,8 @@ public class OperateWithFile implements PlayerTechInitial {
 			}
 		
 		}
+		for(PlayerTechMPO mpo:mlist)
+			System.out.println(mpo.date);
+		return mlist;
 	}
 }
