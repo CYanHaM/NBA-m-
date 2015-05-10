@@ -1060,7 +1060,9 @@ public class TeamTech {
 		}
 		ArrayList<TeamTechPO> list = new ArrayList<TeamTechPO>();	
 		try {
+
 			list = ttds.list();
+
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1069,6 +1071,7 @@ public class TeamTech {
 		for(int i = 0; i<30; i++){
 			TeamTechP2L p2l = new TeamTechP2L();
 			forSort.add(p2l.p2l(list.get(i)));
+
 		}
 		
 		ArrayList<TeamNormalInfo> result = new ArrayList<TeamNormalInfo>();
@@ -1081,7 +1084,8 @@ public class TeamTech {
 				int index = 1;		
 				switch(dataType[0]){
 				case score:
-				{	boolean equ = (v1.score==v2.score);
+				{	
+					boolean equ = (v1.score==v2.score);
 					while(equ&&index<numOfcondition){
 						switch(dataType[index]){
 						case score:
@@ -6334,7 +6338,6 @@ public class TeamTech {
 				return 0;}}; 
 		Collections.sort(forSort, comparator);
 		//--------------------------------------------------------------------
-		
 		int num = 0;
 		if(list.size()<n) num = list.size();
 		else num = n;
@@ -6358,8 +6361,27 @@ public class TeamTech {
 				info.setThree(ttli.threeShotInRate);
 				result.add(info);
 			}
+		}else{
+			for(int i=0;i<num;i++){
+				TeamNormalInfo info = new TeamNormalInfo();
+				TeamTechLineItem ttli= forSort.get(i);
+				info.setAssist(ttli.secondaryAttackave);
+				info.setBlockShot(ttli.blockShotave);
+				info.setDefendRebound(ttli.defensiveReboundave);
+				info.setFault(ttli.faultave);
+				info.setFoul(ttli.foulave);
+				info.setNumOfGame(ttli.gameNum);
+				info.setOffendRebound(ttli.offensiveReboundave);
+				info.setPenalty(ttli.penaltyShotInRate);
+				info.setPoint(ttli.scoreave);
+				info.setRebound(ttli.reboundave);
+				info.setShot(ttli.shotInRate);
+				info.setSteal(ttli.stealave);
+				info.setTeamName(ttli.name);
+				info.setThree(ttli.threeShotInRate);
+				result.add(info);
+			}
 		}
-		
 		return result;
 		
 	}

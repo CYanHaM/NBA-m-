@@ -18,17 +18,5 @@ public class littleTest {
 		td.WriteIn();
 		TeamTechData ttd = new TeamTechData();
 		ttd.WriteIn("matchData");
-//		thi = tt.sortHigh("winRate.asc", 30);
-//		for(int i = 0; i<30; i++){
-//			System.out.println(thi.get(i).toString());
-//		}
-		tni = tt.sortNorm("point.des", 30, true);
-		for(int i = 0; i<30; i++){
-			System.out.println(tni.get(i).getFoul());
-		}
-		for(int i = 0; i<30;i++){
-			System.out.println(tni.get(i).getFault());
-		}
-
 	}
 }

@@ -40,6 +40,7 @@ public class TeamCommond {
 		
 		for(int i = 0; i<result.size(); i++){
 			outhere.print(result.get(i));
+
 		}
 	}
 	
