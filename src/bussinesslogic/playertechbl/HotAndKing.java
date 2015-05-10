@@ -13,6 +13,15 @@ import bussinesslogic.Transfer.P2L.MPO2MVO;
 import data.playertechdata.OperateWithFile;
 
 public class HotAndKing {
+	
+	public static void main(String[] args){
+		HotAndKing na = new HotAndKing();
+		ArrayList<PlayerHotInfo> res = na.findHotPlayer("rebound", 5);
+		for(PlayerHotInfo i:res){
+			System.out.println(i.getName()+" "+ i.getField()+" "+i.getValue()+" "+i.getUpgradeRate());
+		}
+	}
+	
 	ShowPlayerTech sh = new ShowPlayerTech();
 	//获得热门球员（进步最快球员），所有数据为Ave
 	//field可为score，rebound，assist
@@ -20,12 +29,12 @@ public class HotAndKing {
 		ArrayList<PlayerHotInfo> result = new ArrayList<PlayerHotInfo>();
 		ArrayList<PlayerTechVO> list = sh.showSeasonPlayerData();
 		list = sortImproving(list,field);
-		for(int i=0;i<number;i++){
+		int sz = list.size()>number?number:list.size();
+		for(int i=0;i<sz;i++){
 			PlayerHotInfo info = new PlayerHotInfo();
 			PlayerTechVO vo = list.get(i);
 			info.setName(vo.name);
 			info.setTeamName(vo.team);
-			//======================================================还有历史问题
 			info.setPosition(vo.position);
 			info.setField(field);
 			switch(field){
@@ -50,7 +59,8 @@ public class HotAndKing {
 		ArrayList<PlayerKingInfo> result = new ArrayList<PlayerKingInfo>();
 		ArrayList<PlayerTechVO> list = sh.showSeasonPlayerData();
 		list = sortSeason(list,field);
-		for(int i=0;i<number;i++){
+		int sz = list.size()>number?number:list.size();
+		for(int i=0;i<sz;i++){
 			PlayerKingInfo info = new PlayerKingInfo();
 			PlayerTechVO vo = list.get(i);
 			info.setName(vo.name);
@@ -80,7 +90,8 @@ public class HotAndKing {
 		MPO2MVO p2v = new MPO2MVO();
 		ArrayList<PlayerTechMVO> list = p2v.list2vo(temp); 
 		list = sortToday(list,field);
-		for(int i=0;i<number;i++){
+		int sz = list.size()>number?number:list.size();
+		for(int i=0;i<sz;i++){
 			PlayerKingInfo info = new PlayerKingInfo();
 			PlayerTechMVO vo = list.get(i);
 			info.setName(vo.name);
@@ -110,22 +121,22 @@ public class HotAndKing {
 				switch(field){
 				
 				case "score":
-					if(v1.score==v2.score)
+					if(v1.scoreave==v2.scoreave)
 						return v1.name.compareTo(v2.name);
 					else
-						return v2.score-v1.score;
+						return (v2.scoreave-v1.scoreave)>0?1:-1;
 				
 				case "rebound":
-					if(v1.rebound==v2.rebound)
+					if(v1.reboundave==v2.reboundave)
 						return v1.name.compareTo(v2.name);
 					else
-						return v2.rebound-v1.rebound;
+						return (v2.reboundave-v1.reboundave)>0?1:-1;
 					
 				case "assist":
-					if(v1.secondaryAttack==v2.secondaryAttack)
+					if(v1.secondaryAttackave==v2.secondaryAttackave)
 						return v1.name.compareTo(v2.name);
 					else
-						return v2.secondaryAttack-v1.secondaryAttack;
+						return (v2.secondaryAttackave-v1.secondaryAttackave)>0?1:-1;
 					
 				default:
 					System.out.println("wrong type");
@@ -171,24 +182,24 @@ public class HotAndKing {
 	}
 	public ArrayList<PlayerTechVO> sortImproving(ArrayList<PlayerTechVO> list, String field){
 		Comparator<PlayerTechVO> comparator = new Comparator<PlayerTechVO>(){  
-			public int compare(PlayerTechVO v1, PlayerTechVO v2) {   
+			public int compare(PlayerTechVO v1, PlayerTechVO v2) {
 				
 				switch(field){
 				
 				case "score":
-					if(v1.score==v2.score)
+					if(v1.scoreImproving==v2.scoreImproving)
 						return v1.name.compareTo(v2.name);
 					else
 						return (v2.scoreImproving-v1.scoreImproving)>0?1:-1;
 				
 				case "rebound":
-					if(v1.rebound==v2.rebound)
+					if(v1.reboundImproving==v2.reboundImproving)
 						return v1.name.compareTo(v2.name);
 					else
 						return (v2.reboundImproving-v1.reboundImproving)>0?1:-1;
 					
 				case "assist":
-					if(v1.secondaryAttack==v2.secondaryAttack)
+					if(v1.secondaryAttackImproving==v2.secondaryAttackImproving)
 						return v1.name.compareTo(v2.name);
 					else
 						return (v2.secondaryAttackImproving-v1.secondaryAttackImproving)>0?1:-1;

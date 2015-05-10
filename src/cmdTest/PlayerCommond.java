@@ -12,6 +12,7 @@ public class PlayerCommond {
 	public ArrayList<?> result = new ArrayList();
 	private boolean isTotal = false;
 	private int num = 50;
+	private int starNum = 5;
 	boolean isSeason = false;
 	boolean isAll = true;
 	String filter = null;
@@ -28,27 +29,23 @@ public class PlayerCommond {
 		isSeason = true;
 	}
 	
-	@CmdOption(names = {"-daily"}, description = "dailyKing",  requires="-king",conflictsWith={"season","filter","sort","total"})
-	public void setDaily(String field){
-		
-	}
-	
 	@CmdOption(names = {"-n"}, args="number", description = "numbers")
 	public void setnum(String number){
 		num = Integer.parseInt(number);
+		starNum = Integer.parseInt(number);
 	}
 	
 	@CmdOption(names = {"-hot"}, args="field", description = "hotPlayer", conflictsWith={"total","-sort","hot", "filter"})
 	public void setHot(String field){
-		result = hk.findHotPlayer(field, num);
+		result = hk.findHotPlayer(field, starNum);
 	}
 
 	@CmdOption(names = {"-king"}, args="field", description = "kingPlayer", conflictsWith={"total","-sort", "filter","hot"})
 	public void setKing(String field){
 		if(isSeason)
-			result = hk.findSeasonKingPlayer(field, num);
+			result = hk.findSeasonKingPlayer(field, starNum);
 		else
-			result = hk.findTodayKingPlayer(field, num);
+			result = hk.findTodayKingPlayer(field, starNum);
 	}
 			
 	@CmdOption(names = {"-filter"}, args="field", conflictsWith={"-hot","king","high"})

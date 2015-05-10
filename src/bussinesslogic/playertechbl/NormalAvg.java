@@ -17,9 +17,9 @@ public class NormalAvg {
 	
 	public static void main(String[] args){
 		NormalAvg na = new NormalAvg();
-		ArrayList<PlayerNormalInfo> res = na.normalAll("league.West,age.22<X<=25", "point.desc", 50);
+		ArrayList<PlayerNormalInfo> res = na.normalAll("league.West,age.22<X<=25", "point.desc,rebound.desc", 50);
 		for(PlayerNormalInfo i:res){
-			System.out.println(i.getName()+" "+i.getPoint());
+			System.out.println(i.getName()+" "+i.getPoint()+" "+i.getRebound());
 		}
 	}
 	ShowPlayerTech sh = new ShowPlayerTech();
@@ -255,14 +255,14 @@ public class NormalAvg {
 							default:	System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)
+							return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.scoreave-v2.scoreave)>0?1:-1;
 							else
 								return (v2.scoreave-v1.scoreave)>0?1:-1;
 						}
-						if(equ)
-							return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "rebound":
@@ -380,13 +380,13 @@ public class NormalAvg {
 							default:	System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareToIgnoreCase(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.reboundave-v2.reboundave)>0?1:-1;
 							else
 								return (v2.reboundave-v1.reboundave)>0?1:-1;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}	
 					case "assist":
@@ -505,13 +505,13 @@ public class NormalAvg {
 								System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ) return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.secondaryAttackave-v2.secondaryAttackave)>0?1:-1;
 							else
 								return (v2.secondaryAttackave-v1.secondaryAttackave)>0?1:-1;
 						}
-						if(equ) return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "blockShot":
@@ -629,17 +629,17 @@ public class NormalAvg {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ) return (v1.name.compareTo(v2.name));
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.blockShotave-v2.blockShotave)>0?1:-1;
 							else
 								return (v2.blockShotave-v1.blockShotave)>0?1:-1;
 						}
-						if(equ) return (v1.name.compareTo(v2.name));
 						break;
 					}
 					case "steal":
-						{	boolean equ = (v1.stealave==v2.stealave);
+					{		boolean equ = (v1.stealave==v2.stealave);
 							while(equ&&index<len){
 								switch(sortField[index]){
 								case "point":
@@ -753,13 +753,13 @@ public class NormalAvg {
 								default:System.out.println("wrong type");	
 								}
 							}//while ends
+							if(equ) return v1.name.compareTo(v2.name);
 							if(index==1){
 								if(sortBy[0].equals("asc"))
 									return (v1.stealave-v2.stealave)>0?1:-1;
 								else
 									return (v2.stealave-v1.stealave)>0?1:-1;
 							}
-							if(equ) return v1.name.compareTo(v2.name);
 							break;
 						}
 					case "foul":
@@ -877,13 +877,13 @@ public class NormalAvg {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.foulave-v2.foulave)>0?1:-1;
 							else
 								return (v2.foulave-v1.foulave)>0?1:-1;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "fault":
@@ -1001,14 +1001,13 @@ public class NormalAvg {
 							default:	System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.faultave-v2.faultave)>0?1:-1;
 							else
 								return (v2.faultave-v1.faultave)>0?1:-1;
 						}
-						if(equ)
-							return v1.name.compareTo(v2.name);
 						break;
 					}	
 					case "minute":
@@ -1126,13 +1125,13 @@ public class NormalAvg {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.timeave-v2.timeave)>0?1:-1;
 							else
 								return (v2.timeave-v1.timeave)>0?1:-1;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "efficient":
@@ -1250,13 +1249,13 @@ public class NormalAvg {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.efficiency-v2.efficiency)>0?1:-1;
 							else
 								return (v2.efficiency-v1.efficiency)>0?1:-1;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					//投篮命中率
@@ -1375,13 +1374,13 @@ public class NormalAvg {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.shotInRate-v2.shotInRate)>0?1:-1;
 							else
 								return (v2.shotInRate-v1.shotInRate)>0?1:-1;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					//三分命中率
@@ -1500,13 +1499,13 @@ public class NormalAvg {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.threeShotInRate-v2.threeShotInRate)>0?1:-1;
 							else
 								return (v2.threeShotInRate-v1.threeShotInRate)>0?1:-1;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}		
 					//罚球命中率
@@ -1626,13 +1625,13 @@ public class NormalAvg {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return (v1.penaltyShotInRate-v2.penaltyShotInRate)>0?1:-1;
 							else
 								return (v2.penaltyShotInRate-v1.penaltyShotInRate)>0?1:-1;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					//两双
@@ -1751,13 +1750,13 @@ public class NormalAvg {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.ifDouble-v2.ifDouble;
 							else
 								return v2.ifDouble-v1.ifDouble;
 						}
-						if(equ) return v1.name.compareTo(v2.name);
 					}
 					default: System.out.println("wrong type");
 					}

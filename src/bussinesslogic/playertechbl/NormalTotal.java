@@ -253,14 +253,13 @@ public class NormalTotal {
 							default:	System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)
-							return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "rebound":
@@ -378,13 +377,13 @@ public class NormalTotal {
 							default:	System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}	
 					case "assist":
@@ -503,13 +502,13 @@ public class NormalTotal {
 								System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ) return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "blockShot":
@@ -627,13 +626,13 @@ public class NormalTotal {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ) return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "steal":
@@ -751,13 +750,13 @@ public class NormalTotal {
 								default:System.out.println("wrong type");	
 								}
 							}//while ends
+							if(equ)	return v1.name.compareTo(v2.name);
 							if(index==1){
 								if(sortBy[0].equals("asc"))
 									return v1.score-v2.score;
 								else
 									return v2.score-v1.score;
 							}
-							if(equ) return v1.name.compareTo(v2.name);
 							break;
 						}
 					case "foul":
@@ -875,13 +874,13 @@ public class NormalTotal {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "fault":
@@ -999,14 +998,13 @@ public class NormalTotal {
 							default:	System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)
-							return v1.name.compareTo(v2.name);
 						break;
 					}	
 					case "minute":
@@ -1124,13 +1122,14 @@ public class NormalTotal {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					case "efficient":
@@ -1248,13 +1247,13 @@ public class NormalTotal {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					//投篮命中率
@@ -1373,13 +1372,13 @@ public class NormalTotal {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					//三分命中率
@@ -1498,13 +1497,13 @@ public class NormalTotal {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}		
 					//罚球命中率
@@ -1624,13 +1623,13 @@ public class NormalTotal {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ)	return v1.name.compareTo(v2.name);
 						break;
 					}
 					//两双
@@ -1749,13 +1748,13 @@ public class NormalTotal {
 							default:System.out.println("wrong type");	
 							}
 						}//while ends
+						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
 								return v1.score-v2.score;
 							else
 								return v2.score-v1.score;
 						}
-						if(equ) return v1.name.compareTo(v2.name);
 					}
 					default: System.out.println("wrong type");
 					}
@@ -1766,9 +1765,7 @@ public class NormalTotal {
 			}; 
 			Collections.sort(all, comparator);
 		}
-		int sz = 0;
-		if(all.size()<n) sz = all.size();
-		else sz = n;
+		int sz = all.size()>n?n:all.size();
 		for(int i=0;i<sz;i++){
 			PlayerTechVO vo = all.get(i);
 			PlayerNormalInfo in = new PlayerNormalInfo();
