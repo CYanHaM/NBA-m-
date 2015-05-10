@@ -1,10 +1,18 @@
 package data.playerinfodata;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import PO.PlayerPO;
+import data.DataProcessing;
+import data.readFrom;
+import data.playertechdata.OperateWithFile;
 import dataservice.playerinfodataservice.PlayerInfoDataService;
 
 public class PlayerInfoData implements PlayerInfoDataService {
@@ -29,7 +37,7 @@ public class PlayerInfoData implements PlayerInfoDataService {
 		}
 		return null;
 	}
-/*	
+
 	public void write(String dataSource){
 		readFrom rf  = new DataProcessing(dataSource);
 		ArrayList<PlayerPO> po = rf.playerRead();
@@ -43,7 +51,15 @@ public class PlayerInfoData implements PlayerInfoDataService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+	}	
+	
+	public static void main(String[] args){
+		PlayerInfoData pi = new PlayerInfoData();
+		pi.write("matchData");
+		OperateWithFile owf = new OperateWithFile();
+		owf.write("matchData");
+		
+		
 	}
-*/	
 
 }

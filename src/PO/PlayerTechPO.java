@@ -64,8 +64,6 @@ public class PlayerTechPO implements Serializable{
 	public int teamFault;                          //ȫ��ʧ�����    
 	
 	public double scoreImproving;
-	public double stealImproving;
-	public double blockShotImproving;
 	public double secondaryAttackImproving;
 	public double reboundImproving;
 }

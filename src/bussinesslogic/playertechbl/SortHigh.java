@@ -17,7 +17,7 @@ public class SortHigh {
 	}
 		ShowPlayerTech sh = new ShowPlayerTech();
 		
-		//·µ»ØËùÓÐÇòÔ±µÄ¸ß½×Êý¾Ý,Ä¬ÈÏave£¬²»¹ýÂË
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ä¸ß½ï¿½ï¿½ï¿½ï¿½ï¿½,Ä¬ï¿½ï¿½aveï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		public ArrayList<PlayerHighInfo> highAll(String sort, int n){
 			ArrayList<PlayerHighInfo> result = new ArrayList<PlayerHighInfo>();
 			ArrayList<PlayerTechVO> list = sh.showSeasonPlayerData();
@@ -52,17 +52,6 @@ public class SortHigh {
 						{	boolean equ = (v1.trueShotInRate==v2.trueShotInRate);
 							while(equ&&index<len){
 								switch(sortField[index]){
-								case "realShot":
-									equ = (v1.trueShotInRate==v2.trueShotInRate);
-									if(!equ){
-										if(sortBy[index].equals("asc")){
-											return (v1.trueShotInRate-v2.trueShotInRate)>0?1:-1;
-										}
-										else{
-											return (v2.trueShotInRate-v1.trueShotInRate)>0?1:-1;
-										}
-									}
-									index++;	break;
 								case "GmSc":
 									equ = (v1.GmScEfficiency==v2.GmScEfficiency);
 									if(!equ){

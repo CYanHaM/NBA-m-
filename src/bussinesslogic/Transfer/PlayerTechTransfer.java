@@ -36,7 +36,6 @@ public class PlayerTechTransfer {
 			vo.faultRate = po.faultRate;
 			vo.usageRate = po.usageRate;
 			
-			//����������
 			vo.offensiveNum = po.offensiveNum;
 			vo.defensiveNum = po.defensiveNum;
 			vo.steal = po.steal;
@@ -49,7 +48,6 @@ public class PlayerTechTransfer {
 			vo.time = po.time;
 			vo.ifDouble=po.ifDouble;
 			
-			//����shuju
 			if(po.gameNum==0){
 				vo.offensiveNumave = 0;
 				vo.defensiveNumave= 0;
@@ -77,33 +75,12 @@ public class PlayerTechTransfer {
 			
 			//������
 			vo.scoreImproving = po.scoreImproving;
-			vo.stealImproving = po.stealImproving;
-			vo.blockShotImproving = po.blockShotImproving;
 			vo.secondaryAttackImproving = po.secondaryAttackImproving;
 			vo.reboundImproving = po.reboundImproving;
 			
 			res.add(vo);
 		}	
 		return res;
-	}
-	
-	//��sift����ʹ�ã���ֻ������ؼ�����
-	public PlayerTechPO vo2po(PlayerTechVO vo){
-		PlayerTechPO po = new PlayerTechPO();
-		po.name = vo.name;
-		po.season = vo.season;
-		po.team = vo.team;
-		po.position=vo.position;
-		po.division =vo.division ;
-		po.steal = vo.steal;
-		po.blockShot = vo.blockShot;
-		po.score = vo.score;
-		po.rebound = vo.rebound;
-		po.secondaryAttack = vo.secondaryAttack;
-		po.ifDouble=vo.ifDouble;
-
-		
-		return po;
 	}
 	
 	public PlayerTechVO po2vo(PlayerTechPO po){
@@ -172,8 +149,6 @@ public class PlayerTechTransfer {
 		
 		//������
 		vo.scoreImproving = po.scoreImproving;
-		vo.stealImproving = po.stealImproving;
-		vo.blockShotImproving = po.blockShotImproving;
 		vo.secondaryAttackImproving = po.secondaryAttackImproving;
 		vo.reboundImproving = po.reboundImproving;
 		

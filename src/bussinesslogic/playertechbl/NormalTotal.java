@@ -379,9 +379,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return v1.rebound-v2.rebound;
 							else
-								return v2.score-v1.score;
+								return v2.rebound-v1.rebound;
 						}
 						break;
 					}	
@@ -504,9 +504,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return v1.secondaryAttack-v2.secondaryAttack;
 							else
-								return v2.score-v1.score;
+								return v2.secondaryAttack-v1.secondaryAttack;
 						}
 						break;
 					}
@@ -628,9 +628,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return v1.blockShot-v2.blockShot;
 							else
-								return v2.score-v1.score;
+								return v2.blockShot-v1.blockShot;
 						}
 						break;
 					}
@@ -752,9 +752,9 @@ public class NormalTotal {
 							if(equ)	return v1.name.compareTo(v2.name);
 							if(index==1){
 								if(sortBy[0].equals("asc"))
-									return v1.score-v2.score;
+									return v1.steal-v2.steal;
 								else
-									return v2.score-v1.score;
+									return v2.steal-v1.steal;
 							}
 							break;
 						}
@@ -876,9 +876,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return v1.foul-v2.foul;
 							else
-								return v2.score-v1.score;
+								return v2.foul-v1.foul;
 						}
 						break;
 					}
@@ -1000,9 +1000,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return v1.fault-v2.fault;
 							else
-								return v2.score-v1.score;
+								return v2.fault-v1.fault;
 						}
 						break;
 					}	
@@ -1125,9 +1125,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return v1.time-v2.time;
 							else
-								return v2.score-v1.score;
+								return v2.time-v1.time;
 						}
 						break;
 					}
@@ -1249,9 +1249,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return (v1.efficiency-v2.efficiency)>0?1:-1;
 							else
-								return v2.score-v1.score;
+								return (v2.efficiency-v1.efficiency)>0?1:-1;
 						}
 						break;
 					}
@@ -1374,9 +1374,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return (v1.shotInRate-v2.shotInRate)>0?1:-1;
 							else
-								return v2.score-v1.score;
+								return (v2.shotInRate-v1.shotInRate)>0?1:-1;
 						}
 						break;
 					}
@@ -1499,9 +1499,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return (v1.threeShotInRate-v2.threeShotInRate)>0?1:-1;
 							else
-								return v2.score-v1.score;
+								return (v2.threeShotInRate-v1.threeShotInRate)>0?1:-1;
 						}
 						break;
 					}		
@@ -1625,9 +1625,9 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return (v1.penaltyShotInRate-v2.penaltyShotInRate)>0?1:-1;
 							else
-								return v2.score-v1.score;
+								return (v2.penaltyShotInRate-v1.penaltyShotInRate)>0?1:-1;
 						}
 						break;
 					}
@@ -1750,15 +1750,15 @@ public class NormalTotal {
 						if(equ)	return v1.name.compareTo(v2.name);
 						if(index==1){
 							if(sortBy[0].equals("asc"))
-								return v1.score-v2.score;
+								return v1.ifDouble-v2.ifDouble;
 							else
-								return v2.score-v1.score;
+								return v2.ifDouble-v1.ifDouble;
 						}
 					}
 					default: System.out.println("wrong type");
 					}
 					//δ�������з�֧
-					System.out.println("δ�������з�֧��wrong field");
+					System.out.println("wrong field");
 					return 0;
 				}
 			}; 

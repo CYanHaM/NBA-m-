@@ -17,7 +17,7 @@ public class NormalAvg {
 	
 	public static void main(String[] args){
 		NormalAvg na = new NormalAvg();
-		ArrayList<PlayerNormalInfo> res = na.normalAll("league.West,age.22<X<=25", "point.desc,rebound.desc", 50);
+		ArrayList<PlayerNormalInfo> res = na.normalAll("age.22<X<=25", "point.desc,rebound.desc", 50);
 		for(PlayerNormalInfo i:res){
 			System.out.println(i.getName()+" "+i.getPoint()+" "+i.getRebound());
 		}

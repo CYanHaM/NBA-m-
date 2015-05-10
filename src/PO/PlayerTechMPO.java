@@ -2,10 +2,7 @@ package PO;
 import java.io.Serializable;
 
 public class PlayerTechMPO implements Serializable,Cloneable{
-	
-	/**
-	 *ÿ��������Ա����ͳ�� 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	public String name;                         //����
@@ -32,7 +29,6 @@ public class PlayerTechMPO implements Serializable,Cloneable{
 	public int ifFirstLineUp;                 //�Ƿ��ȷ�
 	public int ifParticipate;                 //�Ƿ����
 
-	//�������������
 	public int teamAllTime;                  //ȫ���ϳ�ʱ��
 	public int teamOffensiveRebound;                  //ȫ�ӽ�������
 	public int teamDefensiveRebound;                //ȫ�ӷ�������

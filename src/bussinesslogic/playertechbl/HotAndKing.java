@@ -1,8 +1,11 @@
 package bussinesslogic.playertechbl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 import test.data.PlayerHotInfo;
 import test.data.PlayerKingInfo;
@@ -16,9 +19,14 @@ public class HotAndKing {
 	
 	public static void main(String[] args){
 		HotAndKing na = new HotAndKing();
-		ArrayList<PlayerHotInfo> res = na.findHotPlayer("rebound", 5);
+		/*ArrayList<PlayerHotInfo> res = na.findHotPlayer("assist", 100);
 		for(PlayerHotInfo i:res){
 			System.out.println(i.getName()+" "+ i.getField()+" "+i.getValue()+" "+i.getUpgradeRate());
+		}
+		*/
+		ArrayList<PlayerKingInfo> res = na.findSeasonKingPlayer("assist", 500);
+		for(PlayerKingInfo i:res){
+			System.out.println(i.getName()+" "+ i.getField()+" "+i.getValue());
 		}
 	}
 	
@@ -64,7 +72,6 @@ public class HotAndKing {
 			PlayerTechVO vo = list.get(i);
 			info.setName(vo.name);
 			info.setTeamName(vo.team);
-			//======================================================������ʷ����
 			info.setPosition(vo.position);
 			info.setField(field);
 			switch(field){
@@ -85,9 +92,19 @@ public class HotAndKing {
 	public ArrayList<PlayerKingInfo> findTodayKingPlayer(String field, int number){
 		ArrayList<PlayerKingInfo> result = new ArrayList<PlayerKingInfo>();
 		OperateWithFile owf = new OperateWithFile();
-		ArrayList<PlayerTechMPO> temp = owf.readMPO();
+		ArrayList<PlayerTechMPO> temp1 = owf.readMPO();
 		MPO2MVO p2v = new MPO2MVO();
-		ArrayList<PlayerTechMVO> list = p2v.list2vo(temp); 
+		ArrayList<PlayerTechMVO> temp2 = p2v.list2vo(temp1);
+		ArrayList<PlayerTechMVO> list = new ArrayList<PlayerTechMVO>();
+		for(int i=0;i<temp2.size();i++){
+			String date = temp2.get(i).date;
+			Date dt = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+			String today = sdf.format(dt);
+			if(today.equals(date)){
+				list.add(list.get(i));
+			}
+		}
 		list = sortToday(list,field);
 		int sz = list.size()>number?number:list.size();
 		for(int i=0;i<sz;i++){

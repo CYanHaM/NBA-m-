@@ -1,7 +1,5 @@
 package bussinesslogic.Transfer;
 
-import java.util.ArrayList;
-
 import PO.PlayerPO;
 import VO.PlayerVO;
 
@@ -22,17 +20,6 @@ public class PlayerInfoTrans {
 		
 		return vo;
 		
-	}
-	
-	public ArrayList<PlayerVO> list2vo (ArrayList<PlayerPO> list){
-		int size = list.size();
-		ArrayList<PlayerVO> res = new ArrayList<PlayerVO>();
-		for(int i=0;i<size;i++){
-			//�������ֱ�ӵ��ÿ컹�Ƕ����ֵ�죿��
-			PlayerVO vo = po2vo(list.get(i));
-			res.add(vo);
-		}
-		return res;
 	}
 
 }
