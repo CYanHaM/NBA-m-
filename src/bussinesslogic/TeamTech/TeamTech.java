@@ -27,7 +27,7 @@ public class TeamTech {
 		String[][] clear = new String[term.length][2];
 		int numOfcondition = term.length;
 		for(int i = 0; i<numOfcondition; i++){
-			clear[i] = term[i].split(".");
+			clear[i] = term[i].split("\\.");
 			//clear[][0]中放的是排序条件，clear[][1]中放的是升序或降序
 			switch(clear[i][0]){
 			case "winRate":
@@ -968,7 +968,7 @@ public class TeamTech {
 		String[][] clear = new String[term.length][2];
 		int numOfcondition = term.length;
 		for(int i = 0; i<numOfcondition; i++){
-			clear[i] = term[i].split(".");
+			clear[i] = term[i].split("\\.");
 			//clear[][0]中放的是排序条件，clear[][1]中放的是升序或降序
 			switch(clear[i][0]){
 			case "point": 

@@ -226,6 +226,14 @@ public class DataProcessing implements readFrom{
 				int guestFault=0;
 				int homeTime=0;
 				int guestTime=0;
+				int homeTeamFoul=0;                     //主队犯规
+				int guestTeamFoul=0;                     //客队犯规
+				int homeTeamSteal=0;                     //主队抢断
+				int guestTeamSteal=0;                     //客队抢断
+				int homeTeamSecondaryAttack=0;                     //主队助攻
+				int guestTeamSecondaryAttack=0;                     //客队助攻
+				int homeTeamBlockShot=0;                     //主队盖帽
+				int guestTeamBlockShot=0;                     //客队盖帽
 				
 				for(int j=0;j<homeTeamTip-3;j++){
 					guestDeRebound=guestDeRebound+matchpo.playerStatistic.get(j).defensiveRebound;
@@ -238,6 +246,12 @@ public class DataProcessing implements readFrom{
 					guestPShotIn=guestPShotIn+matchpo.playerStatistic.get(j).penaltyShotIn;
 					guestFault=guestFault+matchpo.playerStatistic.get(j).fault;
 					guestTime=guestTime+matchpo.playerStatistic.get(j).time;
+					guestTeamFoul=guestTeamFoul+matchpo.playerStatistic.get(j).foul;
+					guestTeamSteal=guestTeamSteal+matchpo.playerStatistic.get(j).steal;
+					guestTeamSecondaryAttack=guestTeamSecondaryAttack+matchpo.playerStatistic.get(j).secondaryAttack;
+					guestTeamBlockShot=guestTeamBlockShot+matchpo.playerStatistic.get(j).blockShot;
+
+
 					
 				}
 				
@@ -252,7 +266,10 @@ public class DataProcessing implements readFrom{
 					homePShotIn=homePShotIn+matchpo.playerStatistic.get(j).penaltyShotIn;
 					homeFault=homeFault+matchpo.playerStatistic.get(j).fault;
 					homeTime=homeTime+matchpo.playerStatistic.get(j).time;
-					
+					homeTeamFoul=homeTeamFoul+matchpo.playerStatistic.get(j).foul;
+					homeTeamSteal=homeTeamSteal+matchpo.playerStatistic.get(j).steal;
+					homeTeamSecondaryAttack=homeTeamSecondaryAttack+matchpo.playerStatistic.get(j).secondaryAttack;
+					homeTeamBlockShot=homeTeamBlockShot+matchpo.playerStatistic.get(j).blockShot;
 				}
 				matchpo.homeShot=homeShot;
 				matchpo.guestShot=guestShot;
@@ -278,6 +295,14 @@ public class DataProcessing implements readFrom{
 				matchpo.homeTeamOffensiveRebound=homeOfRebound;
 				matchpo.homeAllTime=homeTime;
 				matchpo.guestAllTime=guestTime;
+				matchpo.homeTeamFoul=homeTeamFoul;
+				matchpo.guestTeamFoul=guestTeamFoul;
+				matchpo.homeTeamSteal=homeTeamSteal;
+				matchpo.guestTeamSteal=guestTeamSteal;
+				matchpo.homeTeamSecondaryAttack=homeTeamSecondaryAttack;
+				matchpo.guestTeamSecondaryAttack=guestTeamSecondaryAttack;
+				matchpo.homeTeamBlockShot=homeTeamBlockShot;
+				matchpo.guestTeamBlockShot=guestTeamBlockShot;
 				//计算主客队进攻回合
 				matchpo.homeTeamOffensiveRound=(double)homeShot+0.4*(double)homePShot-1.07*((double)homeOfRebound/((double)homeOfRebound+(double)guestDeRebound)*((double)homeShot-(double)homeShotin))+1.07*(double)homeFault;
 				matchpo.guestTeamOffensiveRound=(double)guestShot+0.4*(double)guestPShot-1.07*((double)guestOfRebound/((double)guestOfRebound+(double)homeDeRebound)*((double)guestShot-(double)guestShotin))+1.07*(double)guestFault;

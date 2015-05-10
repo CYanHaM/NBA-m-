@@ -31,6 +31,14 @@ public class MatchPO implements Serializable{
 	public int guestTeamOffensiveRebound;              //�Ͷӽ�������
 	public double homeTeamOffensiveRound;              //���ӽ����غ�
 	public double guestTeamOffensiveRound;              //�Ͷӽ����غ�
+	public int homeTeamFoul;                     //主队犯规
+	public int guestTeamFoul;                     //客队犯规
+	public int homeTeamSteal;                     //主队抢断
+	public int guestTeamSteal;                     //客队抢断
+	public int homeTeamSecondaryAttack;                     //主队助攻
+	public int guestTeamSecondaryAttack;;                     //客队助攻
+	public int homeTeamBlockShot;                     //主队盖帽
+	public int guestTeamBlockShot;                     //客队盖帽
 	public int homeScore;               //���ӵ÷�
 	public int guestScore;               //�Ͷӵ÷�
 	public int homeAllTime;              //����ȫԱ�ϳ�ʱ��
